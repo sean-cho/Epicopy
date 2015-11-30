@@ -8,7 +8,7 @@ Authors@R: c(
     person('Hyunseok', 'Kim', email = 'hkim190@jhmi.edu', role = c('aut')),
     person('Leslie', 'Cope', email = 'lcope1@jhmi.edu', role = c('aut')))
 Description: Get CNV information from 450K array
-License: GPL3
+License: Artistic License 2.0
 Depends: 
     Biobase,
     BiocGenerics
@@ -18,10 +18,10 @@ Imports:
     Hmisc,
     minfi,
     GenomicRanges,
-    IRanges,
-    EpicopyData
+    IRanges
 Suggests: 
     Gviz,
     knitr,
-    rmarkdown
+    rmarkdown,
+    EpicopyData
 VignetteBuilder: knitr
