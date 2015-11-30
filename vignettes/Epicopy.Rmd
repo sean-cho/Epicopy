@@ -1,0 +1,130 @@
+---
+title: "Epicopy"
+author: "Sean Cho"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Epicopy}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Running epicopy
+
+The key function within Epicopy is the function `epicopy` which accepts the directory containing the raw Illumina .idat files and a sample sheet in a .csv format. The default argument of `epicopy` runs the code using all the normals included as part of the package (for more information, see **Specifying normal samples** below). 
+
+The function returns 1) circular binary segmentation results in R and 2) the same segmentation results and a marker file for running GISTIC2.0 as tab-delimited files in the current directory (unless otherwise specified using the `output_dir` argument). Note that for the purpose of space and formatting, the progress messages that Epicopy prints out will be suppressed in our examples.
+
+```{r, eval = TRUE, message = FALSE, echo = TRUE, error = FALSE, warning = FALSE, results='hide'}
+library(Epicopy)
+library(EpicopyData)
+library(minfi)
+input_loc <- system.file('extdata', 'raw_idat', package = 'EpicopyData')
+epi_seg <- suppressMessages(epicopy(input_loc, output_dir = FALSE))
+```
+
+```{r, eval = TRUE}
+class(epi_seg)
+head(epi_seg$output)
+```
+
+## Starting from RGChannelSet
+
+If the user desires to start from a pre-read `RGChannelSet`, the Epicopy package also includes individual functions that allow them to do so. This section will outline that process.
+
+### Load dummy data
+
+First, we will read data from .idat files using the minfi package.
+
+```{r, eval = TRUE, message = FALSE, echo = TRUE, error = FALSE, warning = FALSE, results='hide'}
+input_loc <- system.file('extdata', 'raw_idat', package = 'EpicopyData')
+epi_ss <- read.450k.sheet(input_loc)
+head(epi_ss)
+epi_rg <- read.450k.exp(targets = epi_ss)
+```
+
+```{r, eval = TRUE}
+epi_rg
+```
+
+### Get log R ratios
+
+Following that, we will run `getLRR` to obtain the log R ratios (LRR) of the samples compared to reference normals that were included in the Epicopy package. For this exercise we will be using thyroid samples only. As the default option returns the LRR information for normal samples that we are not interested in for this example, we will suppress it using `normal.cnv = FALSE`
+
+```{r, eval = TRUE, message = FALSE, echo = TRUE, error = FALSE, warning = FALSE, results='hide'}
+epi_lrr <- getLRR(rgSet = epi_rg, Normals = 'thyroid', normal.cnv = FALSE)
+```
+
+```{r, eval = TRUE}
+head(epi_lrr)
+```
+
+### Get CNA and segment data
+
+A second function, `LRRtoCNA`, is used to generate segments from the LRR information from the previous step. This uses the `DNAcopy` package and `ParDNAcopy` package for parallelization. As such, `LRRtoCNA` includes arguments for input to pass to the `CNA`, `smooth.CNA`, and `segment` functions. See `?LRRtoCNA` for more details.
+
+```{r, eval = TRUE, message = FALSE, echo = TRUE, error = FALSE, warning = FALSE, results='hide'}
+epi_lrr <- LRRtoCNA(epi_lrr)
+```
+
+```{r, eval = TRUE}
+class(epi_lrr)
+head(epi_lrr$output)
+```
+
+This object is a `CNA` object which holds the segmented data in `$output`. At this point, the user can use this as any other segmented data for their analysis.
+
+### GISTIC 2.0
+
+Epicopy also includes a wrapper function that allows the users to export both the segmented data and a marker file of the probes used in the segmentation process. Both files are the inputs for GISTIC 2.0 on the GenePattern server hosted by the Broad Institute.
+
+There are three key arguments other than the segmented data;
+- `output_dir`: Output directory. Defaults to current.
+- `filterbycount`: Should a filter of minimum probes within a segment be included?
+- `min_probes`: If the previous is `TRUE`, what should the threshold be?
+
+For the `min_probes` argument, we recommend 50 based on our experience with breast and lung data.
+
+For our example, we will not evaluate the following chunk.
+
+```{r, eval = FALSE}
+export_gistic(epi_seg, filterbycount = TRUE, min_probes = 50)
+```
+
+### Visualize data
+
+The `plot_segments` function is included in the package to allow the users to visualize the segmented data.
+
+```{r, eval = TRUE, fig.height = 5, fig.width = 8.5}
+plot_segments(epi_seg, which_sample = 1)
+```
+
+## Specifying normal samples
+
+### For epicopy function
+
+#### User's input
+If reference normal samples are included in the raw data files, a column specifying the normal status of the samples should be included. Normals have to be tagged using the character string normal (case insensitive).  
+
+#### EpicopyData/TCGA-derived normals
+Otherwise, users can specify the one of the three type of normals included in the `EpicopyData` package, derived from normal solid tissue arrayed by the Cancer Genome Atlas (TCGA). To use those, users may input one of four arguments 'thyroid', 'breast', 'lung', or 'all', the last of which uses all available normals. The default uses all normal samples.
+
+### For getLRR function
+
+#### Default
+Defaults to `NULL` which uses all the normal samples included with the `EpicopyData` package.
+
+#### EpicopyData/TCGA-derived normals
+To use `EpicopyData` included normals, as before, normals can be specified using one of four arguments. 
+
+#### User's input
+If the user has their own normal samples, they can specify either a numeric/integer index that identifies the positions of the normal samples in the `RGChannelSet` or a logical vector that flags normal samples as `TRUE`.
+
+#### Use all samples
+The argument `Normals = NA` uses the mode/median (as specified by the user) of all the samples, regardless of status, as reference normals. The idea behind this is that the median copy number of a given genomic region of all the samples should center around zero. Recommended only when there are many samples in the array.
+
+## Session information
+
+```{r}
+sessionInfo()
+```
