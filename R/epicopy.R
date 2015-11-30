@@ -51,7 +51,7 @@
 #' samples are at 2n. The last is recommended either in samples with low CNV, or
 #' when there are many samples. See also \code{\link[Epicopy]{getLRR}}.
 #' 
-#' @import BiocGenerics Hmisc GenomeInfoDb GenomicRanges IRanges modeest minfi EpicopyData
+#' @import BiocGenerics Hmisc GenomeInfoDb GenomicRanges IRanges modeest minfi
 #' @export 
 #' 
 #' @seealso \code{\link[Epicopy]{getLRR}} \code{\link[Epicopy]{LRRtoCNA}} 
