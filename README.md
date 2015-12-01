@@ -1,8 +1,8 @@
 # Epicopy
 
-Epicopy is an R package that obtains copy number variation (CNV) information from Illumina Human Methylation 450K microarrays. If the users have their own reference normal samples or decide to not use any normals for reference (see vignette after installation), Epicopy can be used as a standalone package.
+Epicopy is an R package that obtains copy number variation (CNV) information from Illumina Human Methylation 450K microarrays. If the users have their own reference normal samples or decide to not use any normals for reference (see Usage section below), Epicopy can be used as a standalone package.
 
-If not, the users may choose to install its companion package **"EpicopyData"** which contains a series of normal tissues compiled from the Cancer Genome Atlas (TCGA) effort. It contains normal tissues from three sources; thyroid, breast, and lung. For more information on EpicopyData please visit the [EpicopyData page](https://github.com/sean-cho/EpicopyData).
+If not, users may choose to install its companion package **"EpicopyData"** which contains a series of normal tissues compiled from the Cancer Genome Atlas (TCGA) effort. It contains normal tissues from three sources; thyroid, breast, and lung. For more information on EpicopyData please visit the [EpicopyData page](https://github.com/sean-cho/EpicopyData).
 
 ---
 
@@ -27,7 +27,9 @@ The complete version includes all the normals compiled from TCGA.
 
 #### Step 1: Install EpicopyData
 
-Please download the binary release [here](https://github.com/sean-cho/EpicopyData/releases/download/v1.0.1/EpicopyData_1.0.1.tar.gz) and run the following line of code:
+Please download the binary release [here](https://github.com/sean-cho/EpicopyData/releases/download/v1.0.1/EpicopyData_1.0.1.tar.gz) and run the following line of code.
+
+Do not build the vignette as EpicopyData is a dependency.
 
 ```
 path <- "path.to.file/EpicopyData_1.0.1.tar.gz"
@@ -51,7 +53,7 @@ devtools::install_github('sean-cho/Epicopy', build_vignette = TRUE)
 
 ### Standalone
 
-Users can view the vignette for examples [here](https://github.com/sean-cho/Epicopy/blob/master/vignettes/Epicopy.Rmd). Do not build it as EpicopyNormals is a dependency.
+Since the vignette was not built, users can view the vignette for examples [here](https://github.com/sean-cho/Epicopy/blob/master/vignettes/Epicopy.Rmd).
 
 The key to using Epicopy as a standalone package would be to specify normals in the samplesheet or use the argument `Normals = NA` in the `epicopy` or `getLRR` functions. This is important, as the default argument uses all normals included in the EpicopyData package.
 
