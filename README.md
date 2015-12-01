@@ -59,7 +59,7 @@ Since no vignette is built, users can view the online vignette for examples [her
 
 The key to using Epicopy as a standalone package is to specify normals in the samplesheet or use the argument `Normals = NA` in the `epicopy` or `getLRR` functions. This is important, as the default argument uses all normals included in the EpicopyData package.
 
-### With EpicopyNormals
+### With EpicopyData normals
 
 Install and build the vignette. Users may specify any of the normals included in with the EpicopyData package using the options:
 - `all` or `NULL` (default): Uses all EpicopyData normals.
