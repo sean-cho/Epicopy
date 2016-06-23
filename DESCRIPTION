@@ -9,19 +9,26 @@ Authors@R: c(
     person('Leslie', 'Cope', email = 'lcope1@jhmi.edu', role = c('aut')))
 Description: Get CNV information from 450K array
 License: Artistic License 2.0
-Depends: 
+Depends:
     Biobase,
     BiocGenerics
-Imports: 
+Imports:
     RColorBrewer,
     gplots,
     Hmisc,
     minfi,
     GenomicRanges,
-    IRanges
-Suggests: 
+    IRanges,
+    DNAcopy,
+    GenomeInfoDb,
+    ParDNAcopy,
+    TxDb.Hsapiens.UCSC.hg19.knownGene,
+    modeest,
+    org.Hs.eg.db
+Suggests:
     Gviz,
     knitr,
     rmarkdown,
     EpicopyData
 VignetteBuilder: knitr
+RoxygenNote: 5.0.1
