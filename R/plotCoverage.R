@@ -73,11 +73,11 @@ plotCoverage = function(chr, winSize = 1e+06, maxVal = 50, chrRange = NULL,
   # Plot ideogram
   par(mar = c(0, 2, 3, 2))
   if (is.null(chrRange)) {
-    plot(c(0, chrLengths[1]), c(0, 1.8), type = "n", axes = F, xlab = "", 
+    plot(c(0, chrLengths[1]), c(0, 1.8), type = "n", axes = FALSE, xlab = "", 
          ylab = "", xaxs = "i", yaxs = "i", main = paste("Chromosome", 
                                                          gsub("chr", "", unique(distances$chr))))
   } else {
-    plot(c(from, to), c(0, 1.8), type = "n", axes = F, xlab = "", ylab = "", 
+    plot(c(from, to), c(0, 1.8), type = "n", axes = FALSE, xlab = "", ylab = "", 
          xaxs = "i", yaxs = "i", main = paste("Chromosome", gsub("chr", 
                                                                  "", unique(distances$chr))))
   }
@@ -91,11 +91,11 @@ plotCoverage = function(chr, winSize = 1e+06, maxVal = 50, chrRange = NULL,
   par(mar = c(4, 2, 0.5, 2))
   if (is.null(chrRange)) {
     plot(0, type = "n", xaxs = "i", yaxs = "i", xlab = NA, ylab = NA, 
-         xaxt = "n", yaxt = "n", ylim = c(0, 1), main = NA, axes = F, 
+         xaxt = "n", yaxt = "n", ylim = c(0, 1), main = NA, axes = FALSE, 
          xlim = c(0, max(chrLengths)))
   } else {
     plot(0, type = "n", xaxs = "i", yaxs = "i", xlab = NA, ylab = NA, 
-         xaxt = "n", yaxt = "n", ylim = c(0, 1), main = NA, axes = F, 
+         xaxt = "n", yaxt = "n", ylim = c(0, 1), main = NA, axes = FALSE, 
          xlim = c(from, to))
   }
   distCol = .makeSeqCol(input, 10, pal = c("white", "blue"), maxVal = maxVal)
@@ -113,7 +113,7 @@ plotCoverage = function(chr, winSize = 1e+06, maxVal = 50, chrRange = NULL,
   
   # Plot legend for coverage map
   par(mar = c(1, 0, 1, 0))
-  plot(c(0, 1), c(0, 1), type = "n", axes = F, ylab = NA, xlab = NA)
+  plot(c(0, 1), c(0, 1), type = "n", axes = FALSE, ylab = NA, xlab = NA)
   legend.image = as.raster(matrix(distCol$legend, nrow = 1))
   rasterImage(legend.image, 0.25, 0.25, 0.75, 1)
   rect(0.25, 0.25, 0.75, 1)
@@ -138,7 +138,7 @@ plotCoverage = function(chr, winSize = 1e+06, maxVal = 50, chrRange = NULL,
   text(0.805, 0.625, labels = paste("= ", winMetPrefix, sep = ""), pos = 4)
   
   # Plot legend for ideogram
-  plot(c(0, 1), c(0, 1), type = "n", axes = F, ylab = NA, xlab = NA)
+  plot(c(0, 1), c(0, 1), type = "n", axes = FALSE, ylab = NA, xlab = NA)
   legend("center", title = "Ideogram legend", cex = 0.75, legend = c("Centromere", 
                                                                      "Giemsa Positive 25", "Giemsa Positive 50", "Giemsa Positive 75", 
                                                                      "Giemsa Positive 100", "Giemsa Negative", "Giemsa Variable", "Stalk"), 

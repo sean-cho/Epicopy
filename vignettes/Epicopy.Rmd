@@ -19,7 +19,11 @@ The function returns 1) circular binary segmentation results in R and 2) the sam
 library(Epicopy)
 library(EpicopyData)
 library(minfi)
+data(data_vignette)
 input_loc <- system.file('extdata', 'raw_idat', package = 'EpicopyData')
+```
+
+```{r, eval = FALSE}
 epi_seg <- suppressMessages(epicopy(input_loc, output_dir = FALSE))
 ```
 
@@ -51,7 +55,7 @@ epi_rg
 
 Following that, we will run `getLRR` to obtain the log R ratios (LRR) of the samples compared to reference normals that were included in the Epicopy package. For this exercise we will be using thyroid samples only. As the default option returns the LRR information for normal samples that we are not interested in for this example, we will suppress it using `normal.cnv = FALSE`
 
-```{r, eval = TRUE, message = FALSE, echo = TRUE, error = FALSE, warning = FALSE, results='hide'}
+```{r, eval = FALSE, message = FALSE, echo = TRUE, error = FALSE, warning = FALSE, results='hide'}
 epi_lrr <- getLRR(rgSet = epi_rg, Normals = 'thyroid', normal.cnv = FALSE)
 ```
 
@@ -63,13 +67,13 @@ head(epi_lrr)
 
 A second function, `LRRtoCNA`, is used to generate segments from the LRR information from the previous step. This uses the `DNAcopy` package and `ParDNAcopy` package for parallelization. As such, `LRRtoCNA` includes arguments for input to pass to the `CNA`, `smooth.CNA`, and `segment` functions. See `?LRRtoCNA` for more details.
 
-```{r, eval = TRUE, message = FALSE, echo = TRUE, error = FALSE, warning = FALSE, results='hide'}
-epi_lrr <- LRRtoCNA(epi_lrr)
+```{r, eval = FALSE, message = FALSE, echo = TRUE, error = FALSE, warning = FALSE, results='hide'}
+epi_cna <- LRRtoCNA(epi_lrr)
 ```
 
 ```{r, eval = TRUE}
-class(epi_lrr)
-head(epi_lrr$output)
+class(epi_cna)
+head(epi_cna$output)
 ```
 
 This object is a `CNA` object which holds the segmented data in `$output`. At this point, the user can use this as any other segmented data for their analysis.
