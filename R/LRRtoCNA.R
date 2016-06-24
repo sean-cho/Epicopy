@@ -19,6 +19,14 @@
 #'    
 #' @return A segmented DNAcopy object. See \code{\link[DNAcopy]{segment}}.
 #' 
+#' @examples
+#' \dontrun{
+#' # Load example data
+#' data(data_vignette)
+#' # Run segmentation
+#' epi_cna <- LRRtoCNA(epi_lrr, seg.undo.splits = 'sdundo', seg.undo.SD = 2)
+#' }
+#' 
 #' @import minfi DNAcopy ParDNAcopy
 #' @export
 #' 

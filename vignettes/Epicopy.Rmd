@@ -103,6 +103,7 @@ The `plot_segments` function is included in the package to allow the users to vi
 plot_segments(epi_seg, which_sample = 1)
 ```
 
+
 ## Specifying normal samples
 
 ### For epicopy function

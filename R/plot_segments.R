@@ -1,4 +1,4 @@
-#' Run Epicopy.
+#' Plot segmented files.
 #' 
 #' \code{epicopy} Plot resulting segments from \code{LRRtoCNA}.
 #' 
@@ -17,6 +17,15 @@
 #' @param ... Passes arguments to plot to control everything other than segment.
 #' 
 #' @details Plots the segmentation results from \code{LRRtoCNA}.
+#' 
+#' @examples
+#' 
+#' \dontrun{
+#' # Load included example data.
+#' data(data_vignette)
+#' # Plot
+#' plot_segments(epi_seg, which_sample = 1)
+#' }
 #' 
 #' @import BiocGenerics Hmisc GenomeInfoDb GenomicRanges IRanges org.Hs.eg.db TxDb.Hsapiens.UCSC.hg19.knownGene
 #' @export plot_segments

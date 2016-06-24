@@ -54,6 +54,15 @@
 #' @import BiocGenerics Hmisc GenomeInfoDb GenomicRanges IRanges modeest minfi
 #' @export 
 #' 
+#' @examples
+#' 
+#' \dontrun{
+#' # Run epicopy on included example TCGA data
+#' input_loc <- system.file('extdata', 'raw_idat', package = 'EpicopyData')
+#' # No output directory, returns only local R object
+#' epi_seg <- epicopy(input_loc, output_dir = FALSE) 
+#' }
+#'
 #' @seealso \code{\link[Epicopy]{getLRR}} \code{\link[Epicopy]{LRRtoCNA}} 
 #'    \code{\link[Epicopy]{export_gistic}} \code{\link[minfi]{RGChannelSet-class}}
 #'    \code{\link[minfi]{read.450k.sheet}} \code{\link[minfi]{read.450k.exp}}

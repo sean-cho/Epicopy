@@ -18,7 +18,14 @@
 #'    probes or more if \code{filterbycount} is \code{TRUE}. Writes two output files,
 #'    segmentation_output and marker_file which are the .seg and marker file
 #'    inputs required for GISTIC 2.0.
+#'    
+#' @examples
 #' 
+#' # Load included sample segmentation data
+#' data(data_vignette)
+#' # Export gistic files (defaults to local directory)
+#' export_gistic(epi_seg, filterbycount = TRUE, min_probes = 50)
+#'
 #' @import BiocGenerics Hmisc GenomeInfoDb GenomicRanges IRanges
 #' @export export_gistic
 #' 
