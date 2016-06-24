@@ -20,12 +20,10 @@
 #' 
 #' @examples
 #' 
-#' \dontrun{
 #' # Load included example data.
 #' data(data_vignette)
 #' # Plot
 #' plot_segments(epi_seg, which_sample = 1)
-#' }
 #' 
 #' @import BiocGenerics Hmisc GenomeInfoDb GenomicRanges IRanges org.Hs.eg.db TxDb.Hsapiens.UCSC.hg19.knownGene
 #' @export plot_segments
