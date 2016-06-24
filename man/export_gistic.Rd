@@ -34,6 +34,14 @@ Argument \code{min_probes} restricts segments to a certain number of
    segmentation_output and marker_file which are the .seg and marker file
    inputs required for GISTIC 2.0.
 }
+\examples{
+
+# Load included sample segmentation data
+data(data_vignette)
+# Export gistic files (defaults to local directory)
+export_gistic(epi_seg, filterbycount = TRUE, min_probes = 50)
+
+}
 \seealso{
 \code{\link[minfi]{preprocessFunnorm}} 
    \code{\link[minfi]{RGChannelSet-class}}

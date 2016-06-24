@@ -82,6 +82,16 @@ references, under the assumption that the \code{mode}/\code{median} of all the
 samples are at 2n. The last is recommended either in samples with low CNV, or
 when there are many samples. See also \code{\link[Epicopy]{getLRR}}.
 }
+\examples{
+
+\dontrun{
+# Run epicopy on included example TCGA data
+input_loc <- system.file('extdata', 'raw_idat', package = 'EpicopyData')
+# No output directory, returns only local R object
+epi_seg <- epicopy(input_loc, output_dir = FALSE) 
+}
+
+}
 \seealso{
 \code{\link[Epicopy]{getLRR}} \code{\link[Epicopy]{LRRtoCNA}} 
    \code{\link[Epicopy]{export_gistic}} \code{\link[minfi]{RGChannelSet-class}}

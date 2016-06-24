@@ -35,6 +35,13 @@ This function coerces the LRR file into a suitable input for
    provided by the \code{DNAcopy} package. Parallelization for segmentation
    of \code{ParDNAcopy} package is implemented when \code{ncores} >= 2L.
 }
+\examples{
+# Load example data
+data(data_vignette)
+# Run segmentation
+epi_cna <- LRRtoCNA(epi_lrr, seg.undo.splits = 'sdundo', seg.undo.SD = 2)
+
+}
 \seealso{
 \code{\link[DNAcopy]{CNA}}
    \code{\link[DNAcopy]{smooth.CNA}}

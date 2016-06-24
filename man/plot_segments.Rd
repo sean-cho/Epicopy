@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_segments.R
 \name{plot_segments}
 \alias{plot_segments}
-\title{Run Epicopy.}
+\title{Plot segmented files.}
 \usage{
 plot_segments(CNA, which_sample, threshold = 0.15, ylab = "Copy Number",
   xlab = "Genomic Location (kb)", ylim = c(-2, 2), title = NULL,
@@ -36,6 +36,14 @@ Plots segmentation output for individual samples.
 \code{epicopy} Plot resulting segments from \code{LRRtoCNA}.
 
 Plots the segmentation results from \code{LRRtoCNA}.
+}
+\examples{
+
+# Load included example data.
+data(data_vignette)
+# Plot
+plot_segments(epi_seg, which_sample = 1)
+
 }
 \seealso{
 \code{\link[Epicopy]{getLRR}} \code{\link[Epicopy]{LRRtoCNA}} 

@@ -76,7 +76,6 @@ from TCGA.
 }
 \examples{
 
-\dontrun{
 # Get LRR
 normix <- tsh$Sample_Group == 'Normal'
 # Median is used for quick calculation
@@ -85,7 +84,7 @@ test <- getLRR(tset, Normals = normix, Ref = 'median')
 # Segment data with 4 cores
 test.tum <- test[,!normix]
 test.seg <- LRRtoCNA(LRR = test.tum, ncores = 4L)
-head(test.seg$output)}
+head(test.seg$output)
 
 }
 \seealso{

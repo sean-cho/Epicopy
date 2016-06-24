@@ -53,7 +53,6 @@
 #' 
 #' @examples
 #' 
-#' \dontrun{
 #' # Get LRR
 #' normix <- tsh$Sample_Group == 'Normal'
 #' # Median is used for quick calculation
@@ -62,7 +61,7 @@
 #' # Segment data with 4 cores
 #' test.tum <- test[,!normix]
 #' test.seg <- LRRtoCNA(LRR = test.tum, ncores = 4L)
-#' head(test.seg$output)}
+#' head(test.seg$output)
 #'
 #' @seealso \code{\link[minfi]{preprocessFunnorm}} 
 #'    \code{\link[minfi]{RGChannelSet-class}}
