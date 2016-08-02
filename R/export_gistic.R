@@ -1,4 +1,4 @@
-#' Plot coverage of 450K across hg19
+#' Export GISTIC-compatible results
 #' 
 #' \code{export_gistic} Exports gistic inputs.
 #' 
@@ -32,10 +32,11 @@
 #' @seealso \code{\link[minfi]{preprocessFunnorm}} 
 #'    \code{\link[minfi]{RGChannelSet-class}}
 
-export_gistic <- function(input, output_dir, filterbycount = TRUE,
+export_gistic <- function(input, output_dir = NULL, filterbycount = TRUE,
                           min_probes = 50, segfile_name = NULL,
                           markerfile_name = NULL){
   probeset <- Epicopy:::hm450[rownames(input$data),]
+  if(is.null(output_dir)) output_dir <- '.'
   marker_file <- data.frame(Probe_ID = names(probeset),
                             Chromosome = as.character(seqnames(probeset)),
                             Position = probeset$probeTarget)
