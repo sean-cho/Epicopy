@@ -14,7 +14,7 @@
 #'    normals. Defaults to NULL, using all included Epicopy normals. See 
 #'    details for information on the normals and additional arguments.
 #' @param sampNames Character string identifying column in sample sheet to use for
-#'    sample names. If NULL, uses the default \code{read.450k.exp} values, which are
+#'    sample names. If NULL, uses the default \code{read.metharray.exp} values, which are
 #'    the ChipNo_Position.
 #' @param QN Logical. Quantile normalize post funnorm? Defaults to \code{FALSE}.
 #' @param mode.bw If Ref = 'mode', uses this bw to estimate the mode. 
@@ -65,7 +65,7 @@
 #'
 #' @seealso \code{\link[Epicopy]{getLRR}} \code{\link[Epicopy]{LRRtoCNA}} 
 #'    \code{\link[Epicopy]{export_gistic}} \code{\link[minfi]{RGChannelSet-class}}
-#'    \code{\link[minfi]{read.450k.sheet}} \code{\link[minfi]{read.450k.exp}}
+#'    \code{\link[minfi]{read.metharray.sheet}} \code{\link[minfi]{read.metharray.exp}}
 
 epicopy <- function(target_dir, output_dir = NULL, project_name = NULL,
                     Normals = NULL, sampNames = NULL, QN = FALSE,
@@ -80,7 +80,7 @@ epicopy <- function(target_dir, output_dir = NULL, project_name = NULL,
     output_dir <- '.'
   }
   
-  target_sheet <- read.450k.sheet(target_dir)
+  target_sheet <- read.metharray.sheet(target_dir)
 
   if(!is.null(Normals)){
     if(!Normals %in% c('breast', 'lung', 'thyroid', 'all')){
@@ -100,7 +100,7 @@ epicopy <- function(target_dir, output_dir = NULL, project_name = NULL,
     if(is.null(normal.cnv)) normal.cnv <- FALSE
   }
   
-  rgset <- read.450k.exp(targets = target_sheet, 
+  rgset <- read.metharray.exp(targets = target_sheet, 
                          verbose = verbose)
   
   lrr <- getLRR(rgSet = rgset, Normals = Normals, sampNames = sampNames, QN = QN,

@@ -42,9 +42,9 @@ First, we will read data from .idat files using the minfi package.
 
 ```{r, eval = TRUE, message = FALSE, echo = TRUE, error = FALSE, warning = FALSE, results='hide'}
 input_loc <- system.file('extdata', 'raw_idat', package = 'EpicopyData')
-epi_ss <- read.450k.sheet(input_loc)
+epi_ss <- read.metharray.sheet(input_loc)
 head(epi_ss)
-epi_rg <- read.450k.exp(targets = epi_ss)
+epi_rg <- read.metharray.exp(targets = epi_ss)
 ```
 
 ```{r, eval = TRUE}
