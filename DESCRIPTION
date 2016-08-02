@@ -1,14 +1,17 @@
 Package: Epicopy
 Type: Package
 Title: Get CNV information from 450K array
-Version: 0.99.0
+Version: 0.99.1
 Date: 2015-02-25
 Authors@R: c(
-    person('Sean, Soonweng', 'Cho', email = 'sean.cho@jhmi.edu', role = c('aut','cre')),
-    person('Hyunseok', 'Kim', email = 'hkim190@jhmi.edu', role = c('aut')),
-    person('Leslie', 'Cope', email = 'lcope1@jhmi.edu', role = c('aut')))
+    person('Sean, Soonweng', 'Cho', email = 'sean.cho@jhmi.edu', 
+    role = c('aut','cre')),
+    person('Hyunseok', 'Kim', email = 'hkim190@jhmi.edu', 
+    role = c('aut')),
+    person('Leslie', 'Cope', email = 'lcope1@jhmi.edu', 
+    role = c('aut')))
 Description: Get CNV information from 450K array
-License: Artistic License 2.0
+License: GPL-3
 Depends:
     Biobase,
     BiocGenerics
