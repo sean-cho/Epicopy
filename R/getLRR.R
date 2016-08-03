@@ -54,15 +54,10 @@
 #' @examples
 #' 
 #' # Get LRR
-#' normix <- tsh$Sample_Group == 'Normal'
+#' load('data/data_vignette.rda')
 #' # Median is used for quick calculation
-#' test <- getLRR(tset, Normals = normix, Ref = 'median')
+#' res_lrr <- getLRR(epi_rg, Normals = 'thyroid, Ref = 'median')
 #' 
-#' # Segment data with 4 cores
-#' test.tum <- test[,!normix]
-#' test.seg <- LRRtoCNA(LRR = test.tum, ncores = 4L)
-#' head(test.seg$output)
-#'
 #' @seealso \code{\link[minfi]{preprocessFunnorm}} 
 #'    \code{\link[minfi]{RGChannelSet-class}}
 #'
