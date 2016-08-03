@@ -25,7 +25,7 @@ normals. Defaults to NULL, using all included Epicopy normals. See
 details for information on the normals and additional arguments.}
 
 \item{sampNames}{Character string identifying column in sample sheet to use for
-sample names. If NULL, uses the default \code{read.450k.exp} values, which are
+sample names. If NULL, uses the default \code{read.metharray.exp} values, which are
 the ChipNo_Position.}
 
 \item{QN}{Logical. Quantile normalize post funnorm? Defaults to \code{FALSE}.}
@@ -95,6 +95,6 @@ epi_seg <- epicopy(input_loc, output_dir = FALSE)
 \seealso{
 \code{\link[Epicopy]{getLRR}} \code{\link[Epicopy]{LRRtoCNA}} 
    \code{\link[Epicopy]{export_gistic}} \code{\link[minfi]{RGChannelSet-class}}
-   \code{\link[minfi]{read.450k.sheet}} \code{\link[minfi]{read.450k.exp}}
+   \code{\link[minfi]{read.metharray.sheet}} \code{\link[minfi]{read.metharray.exp}}
 }
 

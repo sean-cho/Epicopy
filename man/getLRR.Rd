@@ -77,14 +77,9 @@ from TCGA.
 \examples{
 
 # Get LRR
-normix <- tsh$Sample_Group == 'Normal'
+data(data_vignette)
 # Median is used for quick calculation
-test <- getLRR(tset, Normals = normix, Ref = 'median')
-
-# Segment data with 4 cores
-test.tum <- test[,!normix]
-test.seg <- LRRtoCNA(LRR = test.tum, ncores = 4L)
-head(test.seg$output)
+res_lrr <- getLRR(epi_rg, Normals = 'thyroid', Ref = 'median')
 
 }
 \seealso{

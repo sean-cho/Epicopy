@@ -2,10 +2,10 @@
 % Please edit documentation in R/export_gistic.R
 \name{export_gistic}
 \alias{export_gistic}
-\title{Plot coverage of 450K across hg19}
+\title{Export GISTIC-compatible results}
 \usage{
-export_gistic(input, output_dir, filterbycount = TRUE, min_probes = 50,
-  segfile_name = NULL, markerfile_name = NULL)
+export_gistic(input, output_dir = NULL, filterbycount = TRUE,
+  min_probes = 50, segfile_name = NULL, markerfile_name = NULL)
 }
 \arguments{
 \item{input}{Result from \code{LRRtoCNA}.}

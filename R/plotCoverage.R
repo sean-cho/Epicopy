@@ -15,7 +15,7 @@
 #'    \code{maxVal} controls the number of probes for the darkest color in the
 #'    window.
 #' 
-#' @import BiocGenerics Hmisc GenomeInfoDb GenomicRanges IRanges
+#' @import BiocGenerics Hmisc GenomicRanges IRanges GenomeInfoDb
 #' @export plotCoverage
 #' 
 #' @examples
@@ -32,7 +32,7 @@ plotCoverage = function(chr, winSize = 1e+06, maxVal = 50, chrRange = NULL,
   
   # Set basic vars
   chrLengths = seqlengths(hm450)
-  chromosomes = seqnames(hm450)
+  chromosomes = GenomeInfoDb::seqnames(hm450)
   
   input = .countProbes(chr = chr, chrRange = chrRange, winSize = winSize)
   if (is.null(chrRange)) {
@@ -150,7 +150,7 @@ plotCoverage = function(chr, winSize = 1e+06, maxVal = 50, chrRange = NULL,
   
   # Set basic vars
   chrLengths = seqlengths(hm450)
-  chromosomes = seqnames(hm450)
+  chromosomes = GenomeInfoDb::seqnames(hm450)
   
   # Checks
   winSize = as.integer(winSize)
@@ -186,7 +186,7 @@ plotCoverage = function(chr, winSize = 1e+06, maxVal = 50, chrRange = NULL,
   GR = GRanges(seqnames = chr, seqlengths = chrLengths[chr], ranges = IRanges(start = Windows[, 
                                                                                               1], end = Windows[, 2]))
   Ans = countOverlaps(GR, dummy)
-  names(Ans) = paste(seqnames(GR), start(GR), end(GR), sep = ":")
+  names(Ans) = paste(GenomeInfoDb::seqnames(GR), start(GR), end(GR), sep = ":")
   cat("Count complete for", chr, "\n")
   return(Ans)
 }

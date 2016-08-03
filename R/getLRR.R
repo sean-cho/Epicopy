@@ -54,9 +54,9 @@
 #' @examples
 #' 
 #' # Get LRR
-#' load('data/data_vignette.rda')
+#' data(data_vignette)
 #' # Median is used for quick calculation
-#' res_lrr <- getLRR(epi_rg, Normals = 'thyroid, Ref = 'median')
+#' res_lrr <- getLRR(epi_rg, Normals = 'thyroid', Ref = 'median')
 #' 
 #' @seealso \code{\link[minfi]{preprocessFunnorm}} 
 #'    \code{\link[minfi]{RGChannelSet-class}}
