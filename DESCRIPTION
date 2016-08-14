@@ -1,7 +1,7 @@
 Package: Epicopy
 Type: Package
 Title: Get CNV information from 450K array
-Version: 0.99.5
+Version: 0.99.6
 Date: 2015-02-25
 Authors@R: c(
     person('Sean, Soonweng', 'Cho', email = 'sean.cho@jhmi.edu', 
@@ -15,12 +15,12 @@ License: GPL-3
 Depends:
     Biobase,
     BiocGenerics,
-    GenomeInfoDb
+    GenomeInfoDb,
+    minfi
 Imports:
     RColorBrewer,
     gplots,
     Hmisc,
-    minfi,
     GenomicRanges,
     IRanges,
     DNAcopy,

@@ -7,7 +7,7 @@
   if (verbose) 
     cat("[preprocessFunnorm] Mapping to genome\n")
   
-  gmSet <- mapToGenome(rgSet)
+  gmSet <- minfi::mapToGenome(rgSet)
   subverbose <- max(as.integer(verbose) - 1L, 0)
   
   if (verbose) 
@@ -16,14 +16,14 @@
   extractedData <- minfi:::.extractFromRGSet450k(rgSet)
   
   if (is.null(sex)) {
-    gmSet <- addSex(gmSet, getSex(gmSet, cutoff = -3))
+    gmSet <- minfi::addSex(gmSet, getSex(gmSet, cutoff = -3))
     sex <- rep(1L, length(gmSet$predictedSex))
     sex[gmSet$predictedSex == "F"] <- 2L 
   }
   rm(rgSet)
   if (verbose) 
     cat("[preprocessFunnorm] Normalization\n")
-  CN <- getCN(gmSet)
+  CN <- minfi::getCN(gmSet)
   gmSet <- minfi:::.normalizeFunnorm450k(object = gmSet, extractedData = extractedData, 
                                          sex = sex, nPCs = nPCs, verbose = subverbose)
   return(gmSet)
