@@ -17,10 +17,9 @@ The function returns 1) circular binary segmentation results in R and 2) the sam
 
 ```{r, eval = TRUE, message = FALSE, echo = TRUE, error = FALSE, warning = FALSE, results='hide'}
 library(Epicopy)
-library(EpicopyData)
 library(minfi)
 data(data_vignette)
-input_loc <- system.file('extdata', 'raw_idat', package = 'EpicopyData')
+input_loc <- system.file('extdata', 'raw_idat', package = 'Epicopy')
 ```
 
 ```{r, eval = FALSE}
@@ -41,7 +40,7 @@ If the user desires to start from a pre-read `RGChannelSet`, the Epicopy package
 First, we will read data from .idat files using the minfi package.
 
 ```{r, eval = TRUE, message = FALSE, echo = TRUE, error = FALSE, warning = FALSE, results='hide'}
-input_loc <- system.file('extdata', 'raw_idat', package = 'EpicopyData')
+input_loc <- system.file('extdata', 'raw_idat', package = 'Epicopy')
 epi_ss <- read.metharray.sheet(input_loc)
 head(epi_ss)
 epi_rg <- read.metharray.exp(targets = epi_ss)
@@ -53,10 +52,10 @@ epi_rg
 
 ### Get log R ratios
 
-Following that, we will run `getLRR` to obtain the log R ratios (LRR) of the samples compared to reference normals that were included in the Epicopy package. For this exercise we will be using thyroid samples only. As the default option returns the LRR information for normal samples that we are not interested in for this example, we will suppress it using `normal.cnv = FALSE`
+Following that, we will run `getLRR` to obtain the log R ratios (LRR) of the samples compared to reference normals that were included in the Epicopy package. For this exercise we will be using the median values of the samples
 
 ```{r, eval = FALSE, message = FALSE, echo = TRUE, error = FALSE, warning = FALSE, results='hide'}
-epi_lrr <- getLRR(rgSet = epi_rg, Normals = 'thyroid', normal.cnv = FALSE)
+epi_lrr <- getLRR(rgSet = epi_rg, Normals = NA)
 ```
 
 ```{r, eval = TRUE}

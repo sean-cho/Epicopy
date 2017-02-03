@@ -58,7 +58,7 @@
 #' 
 #' \dontrun{
 #' # Run epicopy on included example TCGA data
-#' input_loc <- system.file('extdata', 'raw_idat', package = 'EpicopyData')
+#' input_loc <- system.file('extdata', 'raw_idat', package = 'Epicopy')
 #' # No output directory, returns only local R object
 #' epi_seg <- epicopy(input_loc, output_dir = FALSE) 
 #' }
@@ -101,7 +101,7 @@ epicopy <- function(target_dir, output_dir = NULL, project_name = NULL,
   }
   
   rgset <- read.metharray.exp(targets = target_sheet, 
-                         verbose = verbose)
+                              verbose = verbose)
   
   lrr <- getLRR(rgSet = rgset, Normals = Normals, sampNames = sampNames, QN = QN,
          Ref = Ref, mode.bw = mode.bw, mode.method = mode.method, 

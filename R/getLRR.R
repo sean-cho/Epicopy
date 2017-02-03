@@ -56,7 +56,7 @@
 #' # Get LRR
 #' data(data_vignette)
 #' # Median is used for quick calculation
-#' res_lrr <- getLRR(epi_rg, Normals = 'thyroid', Ref = 'median')
+#' res_lrr <- getLRR(epi_rg, Normals = NA, Ref = 'median')
 #' 
 #' @seealso \code{\link[minfi]{preprocessFunnorm}} 
 #'    \code{\link[minfi]{RGChannelSet-class}}
@@ -103,13 +103,21 @@ getLRR <- function(rgSet, Normals = NULL, sampNames = NULL, QN = FALSE,
     Normals <- colnames(rgset) %in% colnames(Normals)
   }
   
-  if (is.null(Normals)) {
-    library(EpicopyData)
-    cat("Using all epicopy normals as reference set.\n")
-    if (!"all.normals" %in% ls(globalenv())) 
-      data("allNormals")
-    rgset <- BiocGenerics::combine(rgSet, all.normals)
-    Normals <- colnames(rgset) %in% colnames(all.normals)
+  if(is.null(Normals)) {
+    if('EpicopyData' %in% installed.packages()){
+      library(EpicopyData)
+      cat("Using all epicopy normals as reference set.\n")
+      if (!"all.normals" %in% ls(globalenv())) 
+        data("allNormals")
+      rgset <- BiocGenerics::combine(rgSet, all.normals)
+      Normals <- colnames(rgset) %in% colnames(all.normals)
+    } else {
+      cat('EpicopyData not installed. Reference will calculated using all user provided samples.\n')
+      Normals <- rep(TRUE, ncol(rgSet))
+      normal.cnv <- TRUE
+      rgset <- rgSet
+    }
+    
   }
   
   if (inherits(Normals, "character")) {
@@ -229,7 +237,7 @@ getLRR <- function(rgSet, Normals = NULL, sampNames = NULL, QN = FALSE,
   cat("Calculating reference intensity using", Ref, ".\n")
   if (Ref == "mode") {
     normal.ref <- apply(normal.fn, 1, function(x) {
-      mlv(x, bw = mode.bw, method = mode.method, na.rm = TRUE)$M
+      modeest::mlv(x, bw = mode.bw, method = mode.method, na.rm = TRUE)$M
     })
   }
   if (Ref == "median") {

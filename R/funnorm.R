@@ -1,7 +1,7 @@
 #' @import Biobase minfi
 
 .funnorm = function(rgSet, nPCs = 2, sex = NULL, verbose = TRUE) {
-  minfi:::.isRG(rgSet)
+  minfi:::.isRGOrStop(rgSet)
   rgSet <- updateObject(rgSet)
   
   if (verbose) 
@@ -29,8 +29,7 @@
   return(gmSet)
   
 }
-environment(.funnorm) = asNamespace('minfi')
-
+# environment(.funnorm) = asNamespace('minfi')
 
 .coerce.pData <- function(pdat) {
   pDat <- apply(pdat, 2, as.character)
