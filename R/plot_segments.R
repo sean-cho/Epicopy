@@ -15,6 +15,7 @@
 #' @param title Title. Defaults to sample name with Epicopy segmentation string.
 #' @param seg_lwd Line width of the segments
 #' @param ... Passes arguments to plot to control everything other than segment.
+#' @return Segment plots.
 #' 
 #' @details Plots the segmentation results from \code{LRRtoCNA}.
 #' 
@@ -111,7 +112,6 @@ plot_segments <- function(CNA, which_sample, threshold = 0.15,
 
 .makecolors <- function (object, pal = cbbPalette, keep.order = TRUE) 
 {
-  require(RColorBrewer)
   if (is.null(dim(object))) {
     ANS = list()
     CLfactor = inherits(object, "factor")

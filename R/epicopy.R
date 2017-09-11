@@ -17,6 +17,7 @@
 #'    sample names. If NULL, uses the default \code{read.metharray.exp} values, which are
 #'    the ChipNo_Position.
 #' @param QN Logical. Quantile normalize post funnorm? Defaults to \code{FALSE}.
+#' @param Ref String. One of 'mode' or 'median'. How to calculate LRR.
 #' @param mode.bw If Ref = 'mode', uses this bw to estimate the mode. 
 #'    Defaults to 0.1.
 #' @param mode.method If Ref = 'mode', uses this method to estimate 
@@ -32,12 +33,15 @@
 #' @param seg.undo.splits Undo.splits argument for \code{segment} from
 #'    \code{DNAcopy}. Default: \code{'sdundo'}.
 #' @param seg.undo.SD undo.SD argument for \code{segment}. Default: 2.
-#'  @param filterbycount Logical. Recommended. Should the output segment file be 
+#' @param filterbycount Logical. Recommended. Should the output segment file be 
 #'    filtered for having at least \code{min_probes} number of probes in the 
 #'    segment.
 #' @param min_probes Number of probes to filter against.
 #' @param verbose Logical. Verbose?
 #' @param ... Passes argument to \code{getLRR}.
+#' 
+#' 
+#' @return Epicopy object and output files.
 #' 
 #' @details Epicopy reads the sample sheet provided by the user in the \code{target_dir},
 #' imports the experiment, and returns a CNA file while writing gistic outputs at

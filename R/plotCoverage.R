@@ -10,6 +10,7 @@
 #' @param maxVal Upper limit of number of probes for darkest color.
 #' @param chrRange Region (in bases) of the chromosome to plot. If NULL plots
 #'    the whole chromosome.
+#' @return A plot of 450K coverage in user defined windows. 
 #' 
 #' @details Uses hg19 annotations. \code{winSize} specifies window sizes and
 #'    \code{maxVal} controls the number of probes for the darkest color in the

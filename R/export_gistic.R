@@ -6,13 +6,14 @@
 #'    segment file and marker file for input into GISTIC 2.0.
 #' 
 #' @param input Result from \code{LRRtoCNA}.
-#' @param output Output directory.
+#' @param output_dir Output directory.
 #' @param filterbycount Logical. Recommended. Should the output segment file be 
 #'    filtered for having at least \code{min_probes} number of probes in the 
 #'    segment.
 #' @param min_probes Number of probes to filter against.
 #' @param segfile_name Name of the output segment file. NULL prints segmentation_output.
-#' @param marker_file Name of the output marker file. NULL prints marker_file.
+#' @param markerfile_name Name of the output marker file. NULL prints marker_file.
+#' @return Exports segmented data into GISTIC2 formatted input files.
 #' 
 #' @details Argument \code{min_probes} restricts segments to a certain number of
 #'    probes or more if \code{filterbycount} is \code{TRUE}. Writes two output files,
