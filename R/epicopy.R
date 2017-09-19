@@ -5,7 +5,7 @@
 #' @description Parses the CNA result from \code{LRRtoCNA} and writes a
 #'    segment file and marker file for input into GISTIC 2.0.
 #' 
-#' @param target_dir Target directory with idat files and sample sheet.
+#' @param target_dir Target directory with IDAT files and sample sheet.
 #' @param output_dir Output directory. Defaults to current directory. If FALSE,
 #'    no GISTIC 2.0 files will be outputted, but can be manually obtained
 #'    using the function \code{export_gistic}.

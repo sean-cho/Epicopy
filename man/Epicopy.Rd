@@ -12,7 +12,7 @@ epicopy(target_dir, output_dir = NULL, project_name = NULL,
   filterbycount = TRUE, min_probes = 50, verbose = TRUE, ...)
 }
 \arguments{
-\item{target_dir}{Target directory with idat files and sample sheet.}
+\item{target_dir}{Target directory with IDAT files and sample sheet.}
 
 \item{output_dir}{Output directory. Defaults to current directory. If FALSE,
 no GISTIC 2.0 files will be outputted, but can be manually obtained
